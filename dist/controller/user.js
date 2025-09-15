@@ -80,10 +80,10 @@ export const LoginUser = async (req, res) => {
             httpOnly: true,
             secure: true,
             sameSite: "none",
+            domain: undefined, // Allow cookies for any domain
         });
         res.status(200).json({
             message: "login success",
-            token,
         });
     }
     catch (error) {
