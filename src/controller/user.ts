@@ -1,5 +1,4 @@
-import type { Request, Response } from "express";
-import { PrismaClient } from "@prisma/client";
+import type { Request, Response } from "express";import { PrismaClient } from "@prisma/client";
 import { usedSignInSchema, usedSignUpSchema } from "../utils/types.js";
 import bcrypt from "bcryptjs";
 import { JWT_SECRET } from "../middleware/auth.js";
@@ -83,8 +82,7 @@ export const LoginUser = async (req: Request, res: Response) => {
     res.cookie("token", token, {
       httpOnly: true,
       secure: true,
-      sameSite: "strict",
-      maxAge: 60 * 60 * 1000,
+      sameSite: "none",
     });
 
     res.status(200).json({
